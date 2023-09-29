@@ -62,3 +62,29 @@ If the same variable is assigned multiple values, the last value will override a
 - ``terraform.tfvars.json`` if present
 -  any ``.auto.tfvars`` or ``.auto.tfvars.json`` files, processed in lexical order of their filenames
 - any ``-var`` and ``-var-file`` options on the command line
+
+## Dealing With Configuration Drift
+
+On week 1 we purposely lost our statefile to see how we would deal with such a situation.
+
+## What happens if we lose our state file?
+
+If you lose your statefile, you most likely have to tear down all your cloud infrastructure manually.
+
+You can use terraform import but it won't work for all cloud resources. You need check the terraform providers documentation for which resources support import.
+
+### Fix Missing Resources with Terraform Import
+
+``Terraform import`` is a command that allows you to import existing resources into
+your terraform configuration. This command will create a new state file with the existing resources.
+
+We created a a statefile with our exisiting S3 bukcet by running `terraform import aws_s3_bucket.bucket bucket-name`.
+
+[Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
+[AWS S3 Bucket Import](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#import)
+
+### Fix Manual Configuration
+
+This can happen if someone goes and delete or modifies cloud resource manually through ClickOps. 
+
+If we run Terraform plan, it will attempt to put our infrastructure back into the expected state fixing Configuration Drift
