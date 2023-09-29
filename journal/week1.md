@@ -137,3 +137,53 @@ module "terrahouse_aws" {
 
 
 [Modules Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
+
+## Considerations when using ChatGPT to write Terraform
+
+LLMs such as ChatGPT may not be trained on the latest documentation or information about Terraform.
+
+It may likely produce older examples that could be deprecated. This often affects providers.
+
+
+
+## Working with Files in Terraform
+
+Terraform is used to manage infrastrucure, so it is not usually the best tool for uploading files, even though it can be used for it. In this project we upload the html file using Terraform, however this is not the approach you should usually take in production environment.
+
+
+### Fileexists function
+
+This is a built in terraform function to check the existance of a file.
+
+```tf
+condition = fileexists(var.error_html_filepath)
+```
+
+https://developer.hashicorp.com/terraform/language/functions/fileexists
+
+### Filemd5
+
+Terraform has several built in functions and this is one of them.
+
+filemd5 is a variant of md5 that hashes the contents of a given file rather than a literal string.
+It turns the contents of the file into an etag.
+
+Every time the content changes, the etag will change. 
+
+https://developer.hashicorp.com/terraform/language/functions/filemd5
+
+
+
+### Path Variable
+
+In terraform there is a special variable called `path` that allows us to reference local paths:
+- path.module = get the path for the current module
+- path.root = get the path for the root module
+[Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+
+
+resource "aws_s3_object" "index_html" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "index.html"
+  source = "${path.root}/public/index.html"
+}
