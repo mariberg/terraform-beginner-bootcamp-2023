@@ -224,3 +224,33 @@ jsonencode encodes a given value to a string using JSON syntax
 ```
 
 [jsonencode](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
+
+### Changing the Lifecycle of Resources
+
+Terraform lifecycle helps you to manage your resources. The typical lifecycle consists of the following phases:
+
+1. Initialization (terraform init):
+2. Configuration (terraform plan):
+3. Execution (terraform apply):
+4. Change Detection:
+Detecting changes in your configuration by comparing the desired state with the current state of your resources. 
+5. Resource Provisioning and Updating:
+Provisioning new resources, updating existing ones, or destroying resources as needed to reach the desired state. This is done by intereacting with the approriate APIs or cloud providers.
+6. Post-Processing:
+Performing post-processing tasks like creating output values or saving the state file to record the current state of the infrastructure.
+7. State Management:
+Maintaining a state file (by default, terraform.tfstate).
+8. Destruction (terraform destroy):
+9. Clean-Up and De-Provisioning:
+Carrying out the destruction plan, removing the resources as specified. 
+10. Completion:
+Terraform completes the execution of the plan and provides a summary of the changes applied or resources destroyed.
+
+[Meta Arguments Lifcycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
+
+
+## Terraform Data
+
+Plain data values such as Local Values and Input Variables don't have any side-effects to plan against and so they aren't valid in replace_triggered_by. You can use terraform_data's behavior of planning an action each time input changes to indirectly use a plain value to trigger replacement.
+
+https://developer.hashicorp.com/terraform/language/resources/terraform-data
