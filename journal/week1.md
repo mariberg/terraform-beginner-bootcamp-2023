@@ -307,9 +307,18 @@ resource "aws_instance" "web" {
 ```
 https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec
 
+
+## Data structures
+
+Terraform is something in between of a proper programming language and a scripting language — it can do more than for example CloudFormation.
+
+There are several different primitive data types such as string, number and boolean as well as collection types such as list(tuple) and map(object). Collection types are list, map and a set.
+
+In practise you might run into one type that you need to convert into another and these can be sometimes difficult to deal with.
+
 ## For Each Expressions
 
-For each allows us to enumerate over complex data types
+``For each`` is a meta-argument used with resource and module blocks. It allows us to enumerate over complex data types
 
 ```sh
 [for s in var.list : upper(s)]
