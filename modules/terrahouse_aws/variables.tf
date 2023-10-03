@@ -47,7 +47,7 @@ variable "error_html_filepath" {
   }
   }
 
-  variable "assets_path" {
-    description = "Path to assets folder"
-    type = string
-  }
+  variable "public_path" {
+  description = "Path to public folder"
+  type = string 
+}
