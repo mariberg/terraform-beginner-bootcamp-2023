@@ -4,7 +4,7 @@ require 'pry'
 require 'active_model'
 
 # we will mock having a state or database for this development server
-# by setting a glocal variable. You would never use a global variable
+# by setting a local variable. You would never use a global variable
 # in production server
 $home = {}
 
@@ -213,7 +213,6 @@ class TerraTownsMockServer < Sinatra::Base
     home.description = description
     home.domain_name = $home[:domain_name]
     home.content_version = content_version
-    binding.pry
 
     unless home.valid?
       error 422, home.errors.messages.to_json
