@@ -4,10 +4,12 @@ package main
 
 // fmt is short format, it contains functions for formatted I/O.
 import (
+
 	"bytes"
 	"context"
 	"encoding/json"
 	"net/http"
+
 	"log"
 	"fmt"
 	"github.com/google/uuid"
@@ -38,6 +40,7 @@ func Provider() *schema.Provider {
 	p = &schema.Provider{
 		ResourcesMap:  map[string]*schema.Resource{
 			"terratowns_home": Resource(),
+
 		},
 		DataSourcesMap:  map[string]*schema.Resource{
 
@@ -69,24 +72,30 @@ func Provider() *schema.Provider {
 func validateUUID(v interface{}, k string) (ws []string, errors []error) {
 	log.Print("validateUUID:start")
 	value := v.(string)
+
 	if _, err := uuid.Parse(value); err != nil {
+
 		errors = append(errors, fmt.Errorf("invalid UUID format"))
 	}
 	log.Print("validateUUID:end")
 	return
 }
 
+
 func providerConfigure(p *schema.Provider) schema.ConfigureContextFunc {
 	return func(ctx context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics ) {
+
 		log.Print("providerConfigure:start")
 		config := Config{
 			Endpoint: d.Get("endpoint").(string),
 			Token: d.Get("token").(string),
 			UserUuid: d.Get("user_uuid").(string),
+
 		}
 		log.Print("providerConfigure:end")
 		return &config, nil
 	}
+
 }
 
 func Resource() *schema.Resource {
@@ -96,6 +105,7 @@ func Resource() *schema.Resource {
 		ReadContext: resourceHouseRead,
 		UpdateContext: resourceHouseUpdate,
 		DeleteContext: resourceHouseDelete,
+
 		Schema: map[string]*schema.Schema{
 			"name": {
 				Type: schema.TypeString,
@@ -125,10 +135,12 @@ func Resource() *schema.Resource {
 		},
 	}
 	log.Print("Resource:start")
+
 	return resource
 }
 
 func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
 	log.Print("resourceHouseCreate:start")
 	var diags diag.Diagnostics
 
@@ -184,10 +196,12 @@ func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interfac
 
 	log.Print("resourceHouseCreate:end")
 
+
 	return diags
 }
 
 func resourceHouseRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
 	log.Print("resourceHouseRead:start")
 	var diags diag.Diagnostics
 
@@ -234,10 +248,12 @@ func resourceHouseRead(ctx context.Context, d *schema.ResourceData, m interface{
 
 	log.Print("resourceHouseRead:end")
 
+
 	return diags
 }
 
 func resourceHouseUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
 	log.Print("resourceHouseUpdate:start")
 	var diags diag.Diagnostics
 
@@ -295,6 +311,7 @@ func resourceHouseUpdate(ctx context.Context, d *schema.ResourceData, m interfac
 }
 
 func resourceHouseDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+
 	log.Print("resourceHouseDelete:start")
 	var diags diag.Diagnostics
 
@@ -330,5 +347,6 @@ func resourceHouseDelete(ctx context.Context, d *schema.ResourceData, m interfac
 	d.SetId("")
 
 	log.Print("resourceHouseDelete:end")
+
 	return diags
 }
