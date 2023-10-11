@@ -24,7 +24,7 @@ provider "terratowns" {
 #}
 
 resource "terratowns_home" "home" {
-  name = "Uno Card Game in 2023!"
+  name = "Uno Card Game in 2023"
   description = <<DESCRIPTION
   Uno is a brilliantly simple card game that never fails to deliver endless fun. 
   With just a deck of colorful cards and a few straightforward rules, players embark
