@@ -1,6 +1,11 @@
-variable "user_uuid" {
+variable "teacherseat_user_uuid" {
   type = string
 }
+
+variable "terratowns_access_token" {
+  type = string
+}
+
 
 variable "bucket_name" {
   type = string
@@ -21,5 +26,10 @@ variable "content_version" {
 
 variable "public_path" {
   description = "Path to public folder"
+  type = string 
+}
+
+variable "terratowns_endpoint" {
+  description = "Terratowns cloud endpoint"
   type = string 
 }
