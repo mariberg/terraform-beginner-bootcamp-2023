@@ -1,9 +1,9 @@
 terratowns_endpoint="https://terratowns.cloud/api"
 licorice = {
-    public_path "/workspace/terraform-beginner-bootcamp-2023/public/licorice"
+    public_path = "/workspace/terraform-beginner-bootcamp-2023/public/licorice"
     content_version = 1
 }
 uno = {
-    public_path "/workspace/terraform-beginner-bootcamp-2023/public/uno"
+    public_path = "/workspace/terraform-beginner-bootcamp-2023/public/uno"
     content_version = 1
 } 
