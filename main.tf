@@ -38,31 +38,32 @@ module "home_licorice_hosting" {
 }
 
 resource "terratowns_home" "home_licorice" {
-  name = "Uno Card Game in 2023"
+  name = "Licorice - sweet or salty treat"
   description = <<DESCRIPTION
-  Uno is a brilliantly simple card game that never fails to deliver endless fun. 
-  With just a deck of colorful cards and a
+  Explore a world of licorice delights, from sweet classics to the bold and 
+  salty adventures of Nordic licorice. Dare to try the intriguing flavors of salty 
+  licorice and unlock a whole new dimension of confectionery enjoyment!
   DESCRIPTION 
   domain_name = module.home_licorice_hosting.domain_name
   #domain_name = "3fee3gg.cloudfront.net"
-  town = "missingo"
-  content_version = var.home_licorice_hosting.content_version
+  town = "cooker-cove"
+  content_version = var.licorice.content_version
 }
 
-module "home_uno_hosting" {
-  source = "./modules/terrahome_aws"
-  user_uuid = var.teacherseat_user_uuid
-  public_path = var.uno.public_path
-  content_version = var.uno.content_version
-}
+#module "home_uno_hosting" {
+#  source = "./modules/terrahome_aws"
+#  user_uuid = var.teacherseat_user_uuid
+#  public_path = var.uno.public_path
+#  content_version = var.uno.content_version
+#}
 
-resource "terratowns_home" "home_uno" {
-  name = "Uno"
-  description = <<DESCRIPTION
-  Examples of best cakes
-  DESCRIPTION 
-  domain_name = module.home_uno_hosting.domain_name
-  #domain_name = "3fee3gg.cloudfront.net"
-  town = "missingo"
-  content_version = var.home_uno_hosting.content_version
-}
+#resource "terratowns_home" "home_uno" {
+#  name = "Uno"
+#  description = <<DESCRIPTION
+#  Best card game
+#  DESCRIPTION 
+#  domain_name = module.home_uno_hosting.domain_name
+#  #domain_name = "3fee3gg.cloudfront.net"
+#  town = "missingo"
+#  content_version = var.uno.content_version
+#}
