@@ -1,6 +1,43 @@
 
 # Terraform Beginner Bootcamp 2023 - Week 1
 
+  - [Root Module Structure](#root-module-structure)
+  - [Terraform and Input Variables](#terraform-and-input-variables)
+    - [Terraform Cloud Variables](#terraform-cloud-variables)
+    - [Loading Terraform Input Variables](#loading-terraform-input-variables)
+    - [var flag](#var-flag)
+    - [var-file flag](#var-file-flag)
+    - [terraform.tvfars](#terraformtvfars)
+    - [auto.tfvars](#autotfvars)
+    - [order of terraform variables](#order-of-terraform-variables)
+  - [Dealing With Configuration Drift](#dealing-with-configuration-drift)
+    - [What happens if we lose our state file?](#what-happens-if-we-lose-our-state-file)
+    - [Fix Missing Resources with Terraform Import](#fix-missing-resources-with-terraform-import)
+    - [Fix Manual Configuration](#fix-manual-configuration)
+    - [Fix using Terraform Refresh](#fix-using-terraform-refresh)
+  - [Terraform Modules](#terraform-modules)
+    - [Terraform Module Structure](#terraform-module-structure)
+    - [Passing Input Variables](#passing-input-variables)
+    - [Modules Sources](#modules-sources)
+  - [Considerations when using ChatGPT to write Terraform](#considerations-when-using-chatgpt-to-write-terraform)
+  - [Working with Files in Terraform](#working-with-files-in-terraform)
+    - [Fileexists function](#fileexists-function)
+    - [Filemd5](#filemd5)
+    - [Path Variable](#path-variable)
+  - [Terraform Locals](#terraform-locals)
+  - [Terraform Data Sources](#terraform-data-sources)
+  - [Working with JSON](#working-with-json)
+    - [Changing the Lifecycle of Resources](#changing-the-lifecycle-of-resources)
+  - [Terraform Data](#terraform-data)
+  - [Provisioners](#provisioners)
+    - [Local-exec](#local-exec)
+    - [Remote-exec](#remote-exec)
+  - [Data structures](#data-structures)
+  - [For Each Expressions](#for-each-expressions)
+
+On week 1 we concentrated purely on Terraform. We got familiar with Terraform modules and variables 
+and learnt how to deal with configuration drift. We deployed and destroyed resources on AWS using Terraform. Furthermore we noticed in  several ways how Terraform is not only a scripting language like CloudFormation, but it can indeed be used more like a programming language in some cases. 
+
 ## Root Module Structure
 
 Our root module structure is as follows:
@@ -26,7 +63,7 @@ In terraform we can set two kind of variables:
 - Enviroment Variables - those you would set in your bash terminal eg. AWS credentials and don't want to commit to your repo
 - Terraform Variables - those that you would normally set in your tfvars file
 
-We can set Terraform Cloud variables to be sensitive so they are not shown visibliy in the UI.
+We can set Terraform Cloud variables to be sensitive so they are not shown visibly in the UI.
 
 ### Loading Terraform Input Variables
 

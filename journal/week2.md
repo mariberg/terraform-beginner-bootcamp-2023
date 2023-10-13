@@ -1,6 +1,21 @@
 # Terraform Beginner Bootcamp 2023 - Week 2
 
+- [Working with Ruby](#working-with-ruby)
+  - [Bundler](#bundler)
+    - [Install Gems](#install-gems)
+    - [Executing Ruby Scripts in the Context of Bundler](#executing-ruby-scripts-in-the-context-of-bundler)
+  - [Sinatra](#sinatra)
+- [Terratowns Mock Server](#terratowns-mock-server)
+  - [Running the Web Server](#running-the-web-server)
+- [CRUD](#crud)
+
+On week 2 it was time to finalize our project and get all the different parts connected to each
+other. We already knew from previous week how to manage AWS resources using Terraform. Now it was time to use Terraform on another cloud platform and for that we needed to build our own custom
+provider. 
+
 ## Working with Ruby
+
+We used Ruby to build our mock server, which was needed to test our custom provider locally.
 
 ### Bundler
 
@@ -55,3 +70,20 @@ bundle exec ruby server.rb
 ```
 
 All of the code for our server is stored in the `server.rb` file.
+
+## Working with Go
+
+Our custom provider was built using Go(Golang) as that is commonly used to build Terraform providers. We wrote our code in ``main.go`` and then used a bash script to build the provider.
+This is because Go files are compiled into binaries before running.
+
+The code for the custom provider in ``main.go`` had to define all CRUD options as that is indeed
+how all Terraform custom providers work.
+
+
+## CRUD
+
+Terraform Provider resources utilize CRUD.
+
+CRUD stands for Create, Read Update, and Delete
+
+https://en.wikipedia.org/wiki/Create,_read,_update_and_delete

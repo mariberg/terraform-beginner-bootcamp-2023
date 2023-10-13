@@ -28,6 +28,11 @@
     + [Terraform Directory](#terraform-directory)
 - [Issues with Terraform Cloud Login and Gitpod Workspace](#issues-with-terraform-cloud-login-and-gitpod-workspace)
 
+The purpose of week 0 was to prepare our environment and get familiar with the basic
+functionalities of Terraform. We needed to install Terrafrom CLI and AWS CLI, know how to work with
+environment variables. It was also good to get familiar with the common Terraform commands and Terraform registry and console before starting the actual project. Below are notes of the different
+topics that were covered during this week.
+
 
 ## Semantic Versioning
 
